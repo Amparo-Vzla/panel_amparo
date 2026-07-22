@@ -1,0 +1,122 @@
+[
+  {
+    "titulo": "Buscador de refugios y mascotas",
+    "descripcion": "Cartelera activa para reportar o buscar mascotas perdidas en las zonas afectadas y ver los puntos veterinarios que están atendiendo.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Cuidado Animal",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Números de emergencia claros",
+    "descripcion": "Teléfonos de auxilio escritos con palabras sencillas y comunes, listos para llamar con un solo toque en caso de una urgencia real.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Números de Emergencia",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Listas de donaciones al momento",
+    "descripcion": "El mapa de insumos está optimizado para cargar rapidito en cualquier teléfono, incluso si tienes pocos datos o la señal está caída.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Cuentas Claras",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Tu perfil de vecino",
+    "descripcion": "Tu propia cuenta para que manejes tu información de contacto de forma segura y lleves un registro de las ayudas en las que participas.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Tus Datos",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Suma tu carro o moto",
+    "descripcion": "Si tienes cómo mover cosas o personas, puedes registrar tu vehículo indicando qué días puedes colaborar y por cuáles zonas te mueves.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Transporte Vecinal",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Registra un centro de acopio",
+    "descripcion": "Si en tu cuadra, iglesia o local abrieron un espacio para recibir donaciones, puedes mandarnos sus datos para sumarlo al mapa de ayuda.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Centros de Ayuda",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Confirmación a pie de calle",
+    "descripcion": "Un sistema para que nuestro equipo y los vecinos verifiquemos en persona cuáles centros de acopio están abiertos, evitando dar viajes perdidos.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Centros de Ayuda",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Control de comida y medicinas",
+    "descripcion": "Herramienta para anotar todo lo que entra como donación y llevar la cuenta de cuándo se reparte a los refugiados o si algo se daña.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Cuentas Claras",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Pedir manos amigas",
+    "descripcion": "Los centros de acopio pueden publicar tareas específicas y avisar exactamente qué tipo de ayuda necesitan de los vecinos cada día.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Voluntariado",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Súmate a un centro cercano",
+    "descripcion": "Elige el centro de acopio que te quede más cerca y regístrate como colaborador directo para darles una mano con las tareas del día.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Voluntariado",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Avisos y alertas del barrio",
+    "descripcion": "Para reportar postes caídos, calles trancadas o tuberías rotas en tu sector, o alertar si se está haciendo un mal uso de la ayuda.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Cuidado Comunitario",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Búsqueda de vecinos",
+    "descripcion": "Censo vecinal para saber el estado de nuestra gente. Cada persona tiene su ficha de estado detallada para dar tranquilidad a sus familias.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Búscame",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Cartel de búsqueda para descargar",
+    "descripcion": "Genera de forma automática una imagen limpia con los datos de la persona que buscas, lista para que la descargues y compartas por WhatsApp.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Búscame",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Archivo de fotos de la calle",
+    "descripcion": "Un espacio seguro donde guardamos todas las imágenes y registros que mandan los vecinos como evidencia real e histórica de lo ocurrido.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Archivo Documental",
+    "autor": "Equipo amparoVZLA"
+  },
+  {
+    "titulo": "Guía rápida de emergencias",
+    "descripcion": "Una página sencilla con recomendaciones claras sobre qué hacer en momentos difíciles y los números de teléfono que de verdad responden.",
+    "fecha": "14/07/2026",
+    "categoria": "Lanzamiento",
+    "referencia": "Números de Emergencia",
+    "autor": "Equipo amparoVZLA"
+  }
+]

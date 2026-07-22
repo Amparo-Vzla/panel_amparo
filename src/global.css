@@ -1,0 +1,140 @@
+@import 'tailwindcss';
+
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'PaytoneOne';
+  src: url('/fonts/PaytoneOne-Regular.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+h1, h2{
+    font-family: 'PaytoneOne', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+p, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+@layer components {
+    input, select, textarea{
+        @apply w-full border border-stone-200 bg-stone-50 p-2 text-xs font-medium text-stone-900 uppercase focus:outline-none focus:border-stone-900 rounded-none
+    }
+    th{
+        @apply border border-stone-200 p-2 bg-stone-50 text-xs font-bold text-stone-900 uppercase rounded-none
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center px-8 py-3.5 text-[10px] font-black uppercase tracking-widest rounded-none transition-colors duration-200 cursor-pointer text-center;
+    }
+
+    /* ─── BOTONES CON RELLENO (Sólidos) ─── */
+    
+    /* Principal / Neutro Oscuro */
+    .btn-dark {
+        @apply bg-stone-900 text-white hover:bg-black;
+    }
+    
+    /* Acción Principal (El azul de la bandera) */
+    .btn-blue {
+        @apply bg-blue-700 text-white hover:bg-blue-600;
+    }
+
+    /* Alerta / Llamativo (El amarillo de la bandera) */
+    .btn-amber {
+        @apply bg-amber-500 text-slate-900 hover:bg-amber-400;
+    }
+
+    /* Peligro / Destructivo (El rojo de la bandera) */
+    .btn-red {
+        @apply bg-red-700 text-white hover:bg-red-800;
+    }
+
+    /* ─── BOTONES CON BORDE (Outline / Fondos nulos) ─── */
+    
+    /* Borde Oscuro */
+    .btn-outline-dark {
+        @apply bg-transparent border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white;
+    }
+
+    /* Borde Azul */
+    .btn-outline-blue {
+        @apply bg-transparent border border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white;
+    }
+
+    /* Borde Amarillo (Como el de "Búscame") */
+    .btn-outline-amber {
+        @apply bg-transparent border border-amber-400 text-amber-500 hover:bg-amber-400 hover:text-slate-900;
+    }
+
+    /* Borde Claro (Ideal para fondos muy oscuros o imágenes) */
+    .btn-outline-light {
+        @apply bg-transparent border border-white text-white hover:bg-white hover:text-stone-900;
+    }
+}
+
+@layer components {
+    /* ... (tus clases de botones anteriores) ... */
+
+    /* ─── BASE DE ALERTAS E INFORMACIÓN (Estructura) ─── */
+    .alert {
+        @apply border border-stone-200 bg-white p-4 flex flex-col gap-1.5 rounded-none shadow-sm;
+    }
+
+    /* Tipografía interna de las alertas para mantener jerarquía industrial */
+    .alert-title {
+        @apply text-[10px] font-black uppercase tracking-widest flex items-center gap-2;
+    }
+    .alert-body {
+        @apply text-xs text-stone-600 leading-relaxed;
+    }
+
+    /* ─── VARIANTES DE ESTADO ─── */
+    
+    /* Éxito (Verde Esmeralda) */
+    .alert-success {
+        @apply border-l-4 border-l-emerald-600;
+    }
+    .alert-success .alert-title {
+        @apply text-emerald-700;
+    }
+
+    /* Error (Rojo) */
+    .alert-error {
+        @apply border-l-4 border-l-red-700;
+    }
+    .alert-error .alert-title {
+        @apply text-red-700;
+    }
+
+    /* Advertencia / Pendiente (Ámbar) */
+    .alert-warning {
+        @apply border-l-4 border-l-amber-500;
+    }
+    .alert-warning .alert-title {
+        @apply text-amber-600;
+    }
+
+    /* Información / Acción (Azul) */
+    .alert-info {
+        @apply border-l-4 border-l-blue-700;
+    }
+    .alert-info .alert-title {
+        @apply text-blue-700;
+    }
+}
