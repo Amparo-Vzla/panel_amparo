@@ -29,4 +29,4 @@ jobs:
       - name: Compilar proyecto
         run: npm run build
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
