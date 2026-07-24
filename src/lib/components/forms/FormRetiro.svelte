@@ -81,7 +81,7 @@
           </tr>
         </thead>
         <tbody>
-          {#each inventario as item}
+          {#each inventario as item (item.recursoId)}
             <tr class="border-b border-stone-100 hover:bg-stone-50 transition-colors">
               <td class="p-2 text-center align-middle">
                 <input 
@@ -140,7 +140,7 @@
           </tr>
         </thead>
         <tbody>
-          {#each inventario.filter(item => seleccionados[item.recursoId]) as item}
+          {#each inventario.filter(item => seleccionados[item.recursoId]) as item (item.recursoId)}
             <tr class="border-b border-stone-100 bg-white">
               <td class="p-2 text-xs font-bold text-stone-900 uppercase font-mono">
                 {item.nombre}

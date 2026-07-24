@@ -1,6 +1,7 @@
 <script>
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
+    import { SvelteURLSearchParams } from '$app/forms';
 
     // onVerExpediente es la función que pasaremos desde el padre para abrir el modal
     let { data, coincidencias, onVerExpediente } = $props();
@@ -8,13 +9,13 @@
     let searchTerm = $state(data.search || '');
 
     function cambiarPagina(nuevaPagina) {
-        const params = new URLSearchParams($page.url.searchParams);
+        const params = new SvelteURLSearchParams($page.url.searchParams);
         params.set('page', nuevaPagina.toString());
         goto(`?${params.toString()}`);
     }
 
     function buscar() {
-        const params = new URLSearchParams();
+        const params = new SvelteURLSearchParams();
         if (searchTerm) params.set('search', searchTerm);
         params.set('page', '1');
         goto(`?${params.toString()}`);
@@ -71,7 +72,7 @@
                             </td>
                         </tr>
                     {:then listaPersonas}
-                        {#each coincidencias || listaPersonas as p}
+                        {#each coincidencias || listaPersonas as p (p.id)}
                             <tr class="hover:bg-stone-50 text-stone-900 font-medium transition-colors">
                                 <td class="p-3 pl-4 font-bold">{p.nombre}</td>
                                 <td class="p-3">{p.apellido}</td>

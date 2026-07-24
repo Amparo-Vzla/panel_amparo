@@ -44,7 +44,7 @@
                     </td>
                 </tr>
             {:then listaVacantes}
-                {#each listaVacantes as vac}
+                {#each listaVacantes as vac (vac.codigo)}
                     <tr class="hover:bg-stone-50 transition">
                         <td class="p-2.5 pl-4">
                             <div class="font-black text-stone-900">{vac.codigo}</div>

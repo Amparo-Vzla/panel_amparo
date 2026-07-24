@@ -28,7 +28,7 @@
                         <label for="vehiculo" class="text-[10px] font-black uppercase text-stone-600">Tipo de Vehículo</label>
                         <select name="tipo" value={vehiculo?.tipo || ''} required >
                             {#if tiposTransporte}
-                                {#each tiposTransporte as tipo}
+                                {#each tiposTransporte as tipo (tipo)}
                                     <option value={tipo}>{tipo}</option>
                                 {/each}
                             {/if}

@@ -6,7 +6,7 @@ import {
     goto
 } from '$app/navigation';
 import Header from '$lib/components/Header.svelte';
-
+ 
 let {
     data,
     form
@@ -62,7 +62,7 @@ function cambiarPagina(nuevaPagina) {
                     <label for="categoria" class="text-[10px] font-black uppercase text-stone-600">Categoría *</label>
                     <select name="categoria" required class="w-full border border-stone-200 bg-stone-50 p-2 text-xs font-medium focus:outline-none focus:border-stone-900 rounded-none bg-white">
                     {#if data.categoriaRecurso}
-                        {#each data.categoriaRecurso as cat}
+                        {#each data.categoriaRecurso as cat (cat)}
                         <option value={cat}>{cat}</option>
                         {/each}
                     {/if}
