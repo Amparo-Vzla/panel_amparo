@@ -46,7 +46,7 @@ const manejarSubmit = () => {
         <div class="relative z-10 flex flex-col justify-between h-full">
             <div class="flex items-center gap-2">
                 <a href={resolve('/')} class="text-[11px] flex gap-2 font-bold uppercase tracking-wider text-white">
-                   <img src={resolve('img/logos/asterisco.png')} alt="amparovzla" width="15"/> Amparo Venezuela
+                   <img src="img/logos/asterisco.png" alt="amparovzla" width="15"/> Amparo Venezuela
                 </a>
             </div>
 
