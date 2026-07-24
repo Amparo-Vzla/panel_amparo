@@ -4,7 +4,6 @@ import {
   timestamp,
   doublePrecision,
   boolean,
-  integer,
   unique,
   index,
   uuid,

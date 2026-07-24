@@ -1,5 +1,4 @@
 <script>
-    import { date } from 'drizzle-orm/mysql-core';
     import { toPng } from 'html-to-image';
     import { tick } from 'svelte';
 

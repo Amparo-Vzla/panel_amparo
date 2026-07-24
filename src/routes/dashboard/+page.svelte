@@ -1,5 +1,4 @@
 <script>
-    import { error } from '@sveltejs/kit';
     import { enhance } from '$app/forms';
     import Header from '$lib/components/Header.svelte';
     import Ubicacion from '$lib/components/Ubicacion.svelte';
@@ -108,6 +107,7 @@
                         } catch (err) {
                             const reversoForm = new FormData();
                             reversoForm.append("codigo", codigoAsignado);
+                            console.log(`Error al subir el video de verificación. Se revertirá la creación de la organización. ${err}`);
                             await fetch("?/deshacerEntidad", { method: "POST", body: reversoForm });
                         }
                     } else {
@@ -170,7 +170,7 @@
                     <select name="tipo" class="w-full" required>
                         <option value="" disabled selected>SELECCIONE...</option>
                         {#if data.tipoEntidad}
-                            {#each data.tipoEntidad as tipo}
+                            {#each data.tipoEntidad as tipo (tipo)}
                                 <option value={tipo}>{tipo}</option>
                             {/each}
                         {/if}

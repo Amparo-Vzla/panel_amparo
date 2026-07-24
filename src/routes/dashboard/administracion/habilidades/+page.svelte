@@ -96,7 +96,7 @@
                         {#await data.profesiones}
                             <tr><td colspan="2" class="p-4 text-center text-stone-400 uppercase text-[10px] font-black animate-pulse">Sincronizando profesiones...</td></tr>
                         {:then lista}
-                            {#each lista as p}
+                            {#each lista as p (p.id)}
                                 <tr class="hover:bg-stone-50/50 transition">
                                     <td class="p-2.5 pl-4 text-[10px] text-stone-400">{p.id}</td>
                                     <td class="p-2.5 font-bold text-stone-900 uppercase text-[11px]">{p.nombre}</td>
@@ -111,7 +111,7 @@
                         {#await data.talentos}
                             <tr><td colspan="2" class="p-4 text-center text-stone-400 uppercase text-[10px] font-black animate-pulse">Sincronizando habilidades...</td></tr>
                         {:then lista}
-                            {#each lista as t}
+                            {#each lista as t (t.id)}
                                 <tr class="hover:bg-stone-50/50 transition">
                                     <td class="p-2.5 pl-4 text-[10px] text-stone-400">{t.id}</td>
                                     <td class="p-2.5 font-bold text-stone-900 uppercase text-[11px]">{t.nombre}</td>
@@ -126,7 +126,7 @@
                         {#await data.puestos}
                             <tr><td colspan="2" class="p-4 text-center text-stone-400 uppercase text-[10px] font-black animate-pulse">Sincronizando puestos...</td></tr>
                         {:then lista}
-                            {#each lista as pst}
+                            {#each lista as pst (pst.id)}
                                 <tr class="hover:bg-stone-50/50 transition">
                                     <td class="p-2.5 pl-4 text-[10px] text-stone-400">{pst.id}</td>
                                     <td class="p-2.5 font-bold text-stone-900 uppercase text-[11px]">{pst.nombre}</td>
@@ -141,7 +141,7 @@
                         {#await data.areasColaboracion}
                             <tr><td colspan="3" class="p-4 text-center text-stone-400 uppercase text-[10px] font-black animate-pulse">Sincronizando sectores civiles...</td></tr>
                         {:then lista}
-                            {#each lista as a}
+                            {#each lista as a (a.id)}
                                 <tr class="hover:bg-stone-50/50 transition">
                                     <td class="p-2.5 pl-4 text-[10px] text-stone-400">{a.id}</td>
                                     <td class="p-2.5 font-bold text-stone-900 uppercase text-[11px]">{a.nombre}</td>

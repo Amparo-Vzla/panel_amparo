@@ -54,7 +54,7 @@
                 {#await data.streamed.personal}
                     <tr><td colspan="4" class="p-4 text-center text-[10px] text-stone-400 font-black uppercase animate-pulse">Sincronizando plantilla operativa...</td></tr>
                 {:then lista}
-                    {#each lista as p}
+                    {#each lista as p (p.id)}
                         <tr class="hover:bg-stone-50 transition">
                             <td class="p-2 pl-4 font-sans">
                                 <div class="font-black text-stone-900 uppercase text-[11px]">{p.usuario.nombre} {p.usuario.apellido}</div>
@@ -107,7 +107,7 @@
                         {#await data.streamed.catalogoPuestos}
                             <option disabled>Cargando puestos...</option>
                         {:then puestosList}
-                            {#each puestosList as pst}
+                            {#each puestosList as pst (pst.id)}
                                 <option value={pst.id}>{pst.nombre.toUpperCase()}</option>
                             {/each}
                         {/await}
@@ -121,7 +121,7 @@
                         {#await data.streamed.catalogoProfesiones}
                             <option disabled>Cargando profesiones...</option>
                         {:then profes}
-                            {#each profes as prof}
+                            {#each profes as prof (prof.id)}
                                 <option value={prof.id}>{prof.nombre.toUpperCase()}</option>
                             {/each}
                         {/await}
@@ -135,7 +135,7 @@
                         {#await data.streamed.catalogoAreas}
                             <option disabled>Cargando áreas...</option>
                         {:then areas}
-                            {#each areas as area}
+                            {#each areas as area (area.id)}
                                 <option value={area.id}>{area.nombre.toUpperCase()}</option>
                             {/each}
                         {/await}
@@ -167,7 +167,7 @@
                     {#await data.streamed.vacantes}
                         <tr><td colspan="4" class="p-4 text-center text-stone-400 uppercase text-[10px]">Cargando historial operativo...</td></tr>
                     {:then listaVacantes}
-                        {#each listaVacantes as vac}
+                        {#each listaVacantes as vac (vac.id)}
                             <tr class="hover:bg-stone-50 transition">
                                 <td class="p-2.5 pl-4">
                                     <div class="font-black text-stone-900">{vac.codigo}</div>

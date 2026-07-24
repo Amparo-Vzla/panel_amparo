@@ -2,6 +2,7 @@
     import { enhance } from '$app/forms';
     import { onMount } from 'svelte';
     import Header from '$lib/components/Header.svelte';
+    import { resolve } from '$app/paths';
 
     let { data, form } = $props();
     let cargando = $state(false);
@@ -186,7 +187,7 @@
                                     {#await data.profesiones}
                                         <option disabled>CARGANDO...</option>
                                     {:then list}
-                                        {#each list as prof}
+                                        {#each list as prof (prof.id)}
                                             <option value={prof.id}>{prof.nombre}</option>
                                         {/each}
                                     {/await}
@@ -233,7 +234,7 @@
                                 {#await data.talentos}
                                     <span class="text-[10px] font-bold text-stone-400 uppercase p-1">Cargando...</span>
                                 {:then list}
-                                    {#each list as t}
+                                    {#each list as t (t.id)}
                                         {@const checksExcedidos = selectedTalents.length >= 4 && !selectedTalents.includes(t.id)}
                                         <label class="flex items-center gap-2 p-1 text-[10px] uppercase font-bold select-none rounded-none border border-transparent {checksExcedidos ? 'opacity-40 cursor-not-allowed' : 'hover:bg-stone-200/50 cursor-pointer text-stone-800'}">
                                             <input 
@@ -262,7 +263,7 @@
                                 {#await data.areasColaboracion}
                                     <span class="text-[10px] font-bold text-stone-400 uppercase p-1">Cargando...</span>
                                 {:then list}
-                                    {#each list as area}
+                                    {#each list as area (area.id)}
                                         {@const areasExcedidas = selectedAreas.length >= 4 && !selectedAreas.includes(area.id)}
                                         <label class="flex items-center gap-2 p-1 text-[10px] uppercase font-bold select-none rounded-none border border-transparent {areasExcedidas ? 'opacity-40 cursor-not-allowed' : 'hover:bg-stone-200/50 cursor-pointer text-stone-800'}">
                                             <input 
@@ -296,14 +297,14 @@
             <div class="text-center pt-4">
                 <p class="text-xs text-stone-500 font-medium">
                     ¿YA TIENES CUENTA?
-                    <a href="/" class="text-stone-900 font-bold uppercase hover:underline block md:inline md:ml-1">INICIA SESIÓN AQUÍ</a>
+                    <a href={resolve('/')} class="text-stone-900 font-bold uppercase hover:underline block md:inline md:ml-1">INICIA SESIÓN AQUÍ</a>
                 </p>
             </div>
         </div>
     </div>
 
     <div class="relative hidden md:flex flex-col justify-between p-12 text-white h-full order-2 overflow-hidden bg-stone-950">
-        {#each imagenes as img, i}
+        {#each imagenes as img, i (img)}
         <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out {imagenActual === i ? 'opacity-100' : 'opacity-0'}">
             <img src={img} alt="FONDO DE REGISTRO" class="w-full h-full object-cover animate-fade" />
             <div class="absolute inset-0 bg-red-950/60"></div>
@@ -311,7 +312,7 @@
         {/each}
         <div class="relative z-10 flex flex-col justify-between h-full">
             <div class="flex items-center gap-2">
-                <a href="/" class="text-[11px] flex gap-2 font-bold uppercase tracking-wider text-white">
+                <a href={resolve('/')} class="text-[11px] flex gap-2 font-bold uppercase tracking-wider text-white">
                    <img src="img/logos/asterisco.png" alt="amparovzla" width="15"/> Amparo Venezuela
                 </a>
             </div>

@@ -3,11 +3,9 @@ import {
   text,
   timestamp,
   date,
-  integer,
   uuid,
 } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
-import { entidades } from "./entidades.js";
 import { categoriaRecurso } from "./enums.js";
 
 export const recursos = pgTable("recursos", {

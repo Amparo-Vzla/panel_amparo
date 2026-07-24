@@ -67,7 +67,7 @@
         <div class="space-y-1">
           <span class="block text-[10px] font-black uppercase text-stone-700">Artículos Solicitados</span>
           <div class="space-y-1">
-            {#each lote.articulos as art}
+            {#each lote.articulos as art (art.id)}
               <label class="flex items-center justify-between p-2 border border-stone-200 bg-white rounded-none {modoRespuesta ? 'cursor-pointer hover:bg-stone-50' : ''}">
                 <div class="flex items-center gap-2">
                   {#if modoRespuesta}
@@ -130,7 +130,7 @@
         <div class="space-y-1">
           <span class="block text-[10px] font-black uppercase text-stone-700">Artículos Solicitados</span>
           <div class="space-y-1">
-            {#each lote.articulos as art}
+            {#each lote.articulos as art (art)}
               <div class="flex items-center justify-between p-2 border border-stone-200 bg-white rounded-none">
                 <div>
                   <span class="text-[11px] text-stone-900 font-bold block uppercase leading-tight">{art.nombre}</span>

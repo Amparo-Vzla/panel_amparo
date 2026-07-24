@@ -1,7 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/db';
 import { recursos, categoriaRecurso  } from '$lib/server/db/schema';
-import { eq, ilike, or, and, count, sql } from 'drizzle-orm';
+import { ilike, or, and, count } from 'drizzle-orm';
 
 export const load = ({ locals, url }) => {
     if (!locals.user) throw redirect(302, '/login');

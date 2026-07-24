@@ -86,7 +86,7 @@ info=""
                 </tr>
               </thead>
               <tbody>
-                {#each lotesFiltrados as lote}
+                {#each lotesFiltrados as lote (lote.lote)}
                   <tr class="border-b border-stone-100 hover:bg-stone-50/50 transition-colors vertical-top align-top">
                     
                     <td class="p-2 font-mono text-[11px] text-stone-900 font-bold bg-stone-50/30">
@@ -100,7 +100,7 @@ info=""
                     
                     <td class="p-2">
                       <div class="grid grid-cols-1 sm:grid-cols-2 gap-1">
-                        {#each lote.articulos as art}
+                        {#each lote.articulos as art (art)}
                           <div class="flex items-center justify-between p-1 px-2 border border-stone-200 bg-stone-50/40 text-[11px]">
                             <span class="font-bold text-stone-800 uppercase truncate pr-2">{art.nombre}</span>
                             <span class="font-mono text-[10px] bg-white border border-stone-200 px-1 font-black text-stone-900">

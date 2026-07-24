@@ -36,6 +36,7 @@ export async function handle({ event, resolve }) {
           : null,
       };
     } catch (err) {
+      console.log("Token inválido o expirado:", err);
       event.cookies.delete("session_token", { path: "/" });
     }
   }

@@ -51,10 +51,6 @@
                         verificado = true;
                     } else if (action.search.includes('registrarPersona') && result.type === 'success') {
                         verificado = false;
-                        estadoSeleccionado = "";
-                        municipioSeleccionado = "";
-                        localidadSeleccionada = "";
-                        inputImgUrl = "";
                     }
                 }
             };
@@ -101,7 +97,7 @@
                 <select name="estatus" required value={form?.estatus ?? 'desaparecido'}
                     >
                     {#if estatusPersona}
-                        {#each estatusPersona as estatus}
+                        {#each estatusPersona as estatus (estatus)}
                             <option value={estatus}>{estatus}</option>
                         {/each}
                     {/if}

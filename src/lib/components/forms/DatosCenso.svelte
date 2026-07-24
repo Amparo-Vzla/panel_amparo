@@ -29,7 +29,7 @@
                 <div class="space-y-1">
                     <label for="estatusPersona" class="text-[10px] font-black uppercase text-stone-600">Estatus Operativo del Sujeto</label>
                     <select name="estatusPersona" value={persona?.estatus || 'BIEN'} >
-                        {#each estatusPersona as est}
+                        {#each estatusPersona as est (est)}
                             {#if est != "DESAPARECIDO" }
                                 <option value={est}>{est}</option>
                             {/if}

@@ -2,7 +2,7 @@
 import { fail, redirect } from "@sveltejs/kit";
 import { dev } from "$app/environment"; // <-- Control de entorno para cookies
 import { db } from "$lib/server/db";
-import { usuarios, vehiculos, entidades } from "$lib/server/db/schema";
+import { usuarios, entidades } from "$lib/server/db/schema";
 import { eq } from "drizzle-orm";
 import { SignJWT } from "jose";
 import { env } from "$env/dynamic/private";
@@ -45,19 +45,10 @@ export const actions = {
       return fail(400, { error: "Credenciales inválidas." });
     }
 
-    let tieneVehiculo = false;
     let entidadId = null;
     let tipoEntidad = null;
 
     try {
-      const vehiculoUsuario = await db
-        .select({ id: vehiculos.id })
-        .from(vehiculos)
-        .where(eq(vehiculos.usuarioId, usuario.id))
-        .limit(1);
-
-      tieneVehiculo = vehiculoUsuario.length > 0;
-
       const entidadAsignada = await db
         .select({ id: entidades.id, tipo: entidades.tipo })
         .from(entidades)
@@ -88,7 +79,6 @@ export const actions = {
       apellido: usuario.apellido,
       cedula: usuario.cedula,
       telefono: usuario.telefono,
-      tieneVehiculo,
       entidadId,
       tipoEntidad,
     };

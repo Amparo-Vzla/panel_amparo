@@ -200,7 +200,7 @@
                             </div>
 
                             <div class="space-y-3 max-h-[50vh] min-h-[280px] overflow-y-auto pr-1">
-                                {#each filas as fila, i}
+                                {#each filas as fila, i (fila)}
                                     {@const opcionesFiltradas = listaRecursos.filter(rec => {
                                         const matchCat = !fila.categoriaFiltro || rec.categoria === fila.categoriaFiltro;
                                         const matchTxt = rec.nombre.toLowerCase().includes(fila.query.toLowerCase());
@@ -219,7 +219,7 @@
                                                 
                                             >
                                                 <option value="">[TODAS]</option>
-                                                {#each categoriasRecursos as cat}
+                                                {#each categoriasRecursos as cat (cat)}
                                                     <option value={cat}>{cat}</option>
                                                 {/each}
                                             </select>
@@ -239,7 +239,7 @@
                                                         {#if opcionesFiltradas.length === 0}
                                                             <div class="p-2 text-[10px] font-mono text-stone-400 uppercase font-bold">Sin resultados</div>
                                                         {:else}
-                                                            {#each opcionesFiltradas as rec}
+                                                            {#each opcionesFiltradas as rec (rec.id)}
                                                                 <button
                                                                     type="button"
                                                                     class="w-full text-left p-1.5 text-xs font-mono font-bold uppercase hover:bg-stone-900 hover:text-white block transition text-stone-800"
