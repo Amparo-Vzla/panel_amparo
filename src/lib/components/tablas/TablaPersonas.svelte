@@ -1,7 +1,7 @@
 <script>
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
-    import { SvelteURLSearchParams } from '$app/forms';
+    import { SvelteURLSearchParams } from 'svelte/reactivity';
 
     // onVerExpediente es la función que pasaremos desde el padre para abrir el modal
     let { data, coincidencias, onVerExpediente } = $props();
