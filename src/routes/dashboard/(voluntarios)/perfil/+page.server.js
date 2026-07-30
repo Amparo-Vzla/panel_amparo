@@ -40,7 +40,6 @@ export const load = ({ locals }) => {
       .then((r) => r[0] || null);
   });
 
-  // 1. Entidad que coordina directamente el usuario actual (COMO ENCARGADO)
   const entidadEncargadoPromise = db
     .select()
     .from(entidades)
