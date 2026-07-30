@@ -34,9 +34,7 @@ export const talentos = pgTable("talentos", {
 });
 
 export const personas = pgTable("personas", {
-  id: uuid("id")
-    .default(sql`gen_random_uuid()`)
-    .primaryKey(),
+  id: uuid("id").default(sql`gen_random_uuid()`).primaryKey(),
   nombre: text("nombre").notNull(),
   apellido: text("apellido").notNull(),
   img: text("img"),
