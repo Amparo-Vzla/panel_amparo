@@ -49,7 +49,7 @@
   <div class="lg:col-span-2 border-r border-stone-200">
     <div class="flex flex-col sm:flex-row justify-between items-stretch sm:items-center border-b border-stone-200 bg-stone-50 p-1 gap-2">
       <div class="flex gap-0.5">
-        {#each ['GLOBALES', 'MIS_SOLICITUDES', 'FINALIZADAS'] as tab}
+        {#each ['GLOBALES', 'MIS_SOLICITUDES', 'FINALIZADAS'] as tab (tab)}
           <button 
             onclick={() => tabActivo = tab} 
             class="px-3 py-1 text-[10px] font-black uppercase rounded-none tracking-tight transition-all {tabActivo === tab ? 'bg-white border border-stone-200 text-stone-900 shadow-sm' : 'text-stone-500 hover:text-stone-900'}"
@@ -107,7 +107,7 @@
               </tr>
             </thead>
             <tbody>
-              {#each solicitudesFiltradas as lote}
+              {#each solicitudesFiltradas as lote (lote.lote + lote.estatus)}
                 <tr 
                   onclick={() => loteSeleccionado = lote}
                   class="border-b border-stone-100 hover:bg-stone-50/60 transition-colors cursor-pointer {loteSeleccionado?.lote === lote.lote && loteSeleccionado?.estatus === lote.estatus ? 'bg-stone-50 border-l-2 border-l-stone-900' : ''}"

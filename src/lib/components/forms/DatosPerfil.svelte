@@ -82,7 +82,7 @@
                 <div class="space-y-1">
                     <label for="profesionId" class="text-[10px] font-black uppercase text-stone-600">Profesion / Oficio</label>
                     <select id="profesionId" name="profesionId" value={perfil.profesionId || ''} >
-                        {#each profesiones as prof}
+                        {#each profesiones as prof (prof.id)}
                             <option value={prof.id}>{prof.nombre.toUpperCase()}</option>
                         {/each}
                     </select>
@@ -97,7 +97,7 @@
                         </span>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 border border-stone-200 bg-stone-50 p-2 max-h-36 overflow-y-auto rounded-none">
-                        {#each talentos as t}
+                        {#each talentos as t (t.id)}
                             {@const checksExcedidos = selectedTalents.length >= 4 && !selectedTalents.includes(t.id)}
                             <label class="flex items-center gap-2 p-1 text-[10px] uppercase font-bold select-none rounded-none border border-transparent {checksExcedidos ? 'opacity-40 cursor-not-allowed' : 'hover:bg-stone-200/50 cursor-pointer text-stone-800'}">
                                 <input 
@@ -123,7 +123,7 @@
                         </span>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 border border-stone-200 bg-stone-50 p-2 max-h-36 overflow-y-auto rounded-none">
-                        {#each areasColaboracion as area}
+                        {#each areasColaboracion as area (area.id)}
                             {@const areasExcedidas = selectedAreas.length >= 4 && !selectedAreas.includes(area.id)}
                             <label class="flex items-center gap-2 p-1 text-[10px] uppercase font-bold select-none rounded-none border border-transparent {areasExcedidas ? 'opacity-40 cursor-not-allowed' : 'hover:bg-stone-200/50 cursor-pointer text-stone-800'}">
                                 <input 

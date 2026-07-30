@@ -182,6 +182,7 @@ procesarRetiroMasivo: async ({ request, locals }) => {
     try {
       items = JSON.parse(itemsRaw);
     } catch (e) {
+      console.error(e);
       return fail(400, { error: "PAYLOAD DAÑADO" });
     }
 

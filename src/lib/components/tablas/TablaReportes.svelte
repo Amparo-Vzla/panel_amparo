@@ -40,7 +40,7 @@
                     {#await data.reportes}
                         <tr><td colspan="4" class="p-4 text-center text-[10px] font-black text-stone-400 uppercase tracking-widest animate-pulse">Cargando...</td></tr>
                     {:then lista}
-                        {#each lista || [] as rep}
+                        {#each lista || [] as rep (rep)}
                             <tr class="hover:bg-stone-50/50 transition">
                                 <td class="p-2.5 pl-4 font-sans font-bold text-stone-900 uppercase text-[11px]">
                                     {rep.usuarioNombre ? `${rep.usuarioNombre} ${rep.usuarioApellido}` : 'Anónimo'}
@@ -59,7 +59,7 @@
                     {#await data.denuncias}
                         <tr><td colspan="4" class="p-4 text-center text-[10px] font-black text-stone-400 uppercase tracking-widest animate-pulse">Cargando...</td></tr>
                     {:then lista}
-                        {#each lista || [] as den}
+                        {#each lista || [] as den (den)}
                             <tr class="hover:bg-stone-50/50 transition">
                                 <td class="p-2.5 pl-4">
                                     <span class="bg-red-50 border border-red-100 text-red-700 text-[9px] font-black px-1.5 py-0.5 uppercase">{den.categoria}</span>

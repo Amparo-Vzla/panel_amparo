@@ -40,7 +40,7 @@
             name="estado"
         >
             <option value={null}>SELECCIONE</option>
-            {#each Mapa as est}
+            {#each Mapa as est (est.estado)}
                 <option value={est.estado}>{est.estado}</option>
             {/each}
         </select>
@@ -56,7 +56,7 @@
             disabled={!estado}
         >
             <option value={null}>SELECCIONE</option>
-            {#each municipiosDisponibles as mun}
+            {#each municipiosDisponibles as mun (mun.municipio)}
                 <option value={mun.municipio}>{mun.municipio}</option>
             {/each}
         </select>
@@ -72,7 +72,7 @@
             disabled={!municipio}
         >
             <option value={null}>SELECCIONE</option>
-            {#each parroquiasDisponibles as par}
+            {#each parroquiasDisponibles as par (par)}
                 <option value={par}>{par}</option>
             {/each}
         </select>

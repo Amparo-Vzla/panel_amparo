@@ -152,6 +152,7 @@ export const actions = {
         exito: "Perfil y capacidades operativas actualizadas con éxito.",
       };
     } catch (err) {
+      console.log(err)
       return fail(500, {
         error: "Fallo crítico al registrar cambios en base de datos.",
       });
@@ -233,6 +234,7 @@ export const actions = {
         exito: "Datos sincronizados de forma correcta en el Censo Nacional.",
       };
     } catch (err) {
+      console.log(err)
       return fail(500, {
         error:
           "Error interno al procesar los datos de localización geográfica.",
@@ -261,6 +263,7 @@ export const actions = {
 
       return { exito: "Credenciales de acceso actualizadas con éxito." };
     } catch (err) {
+      console.log(err)
       return fail(500, {
         error: "Fallo al encriptar o actualizar clave de seguridad.",
       });
@@ -277,26 +280,26 @@ export const actions = {
     if (!entidadId || !nuevoEstatus) {
       return fail(400, { error: "Parámetros insuficientes." });
     }
+    //SE COMENTA PORQUE NO SE USA PERO SE DEJA PARA DESPUES, POR SI SE IMPLEMENTA
+    // try {
+    //   // Verificación estricta: Solo el encargado registrado puede alterar el estatus operacional
+    //   const resultado = await db
+    //     .update(entidades)
+    //     .set({
+    //       estatus: nuevoEstatus,
+    //       updatedAt: new Date(),
+    //     })
+    //     .where(
+    //       and(
+    //         eq(entidades.id, entidadId),
+    //         eq(entidades.encargadoId, locals.user.id),
+    //       ),
+    //     );
 
-    try {
-      // Verificación estricta: Solo el encargado registrado puede alterar el estatus operacional
-      const resultado = await db
-        .update(entidades)
-        .set({
-          estatus: nuevoEstatus,
-          updatedAt: new Date(),
-        })
-        .where(
-          and(
-            eq(entidades.id, entidadId),
-            eq(entidades.encargadoId, locals.user.id),
-          ),
-        );
-
-      return { exito: "Estatus de la entidad actualizado en tiempo real." };
-    } catch (err) {
-      return fail(500, { error: "Fallo de escritura en red operativa." });
-    }
+    //   return { exito: "Estatus de la entidad actualizado en tiempo real." };
+    // } catch (err) {
+    //   return fail(500, { error: "Fallo de escritura en red operativa." });
+    // }
   },
 
   finalizarServicio: async ({ request, locals }) => {
@@ -321,6 +324,7 @@ export const actions = {
         );
       return { exito: "Baja de la membresía operativa ejecutada con éxito." };
     } catch (err) {
+      console.log(err)
       return fail(500, {
         error: "Error interno al procesar la renuncia voluntaria.",
       });
@@ -367,6 +371,7 @@ export const actions = {
 
     return { exito: "Unidad vehicular actualizada correctamente" };
   } catch (err) {
+    console.log(err)
     return fail(500, { error: "Fallo interno de red." });
   };
 },

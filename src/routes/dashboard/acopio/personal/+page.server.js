@@ -130,6 +130,7 @@ export const actions = {
 
             return { exito: `Ficha de personal modificada a: ${nuevoEstatus}` };
         } catch (e) {
+            console.log(e);
             return fail(500, { error: 'Error al alterar el estatus de personal.' });
         }
     },
@@ -150,6 +151,7 @@ export const actions = {
 
             return { exito: `Postulación voluntaria individual ${accion === 'aceptar' ? 'admitida' : 'declinada'}.` };
         } catch (e) {
+            console.log(e);
             return fail(500, { error: 'Error al mitigar el estatus de la postulación.' });
         }
     },
@@ -167,7 +169,8 @@ export const actions = {
 
             return { exito: 'Vacante clausurada correctamente.' };
         } catch (e) {
-            return fail(500, { error: 'No se pudo cerrar la vacante.' });
+            console.log(e);
+            return fail(500, { error: 'No se pudo cerrar la vacante.'});
         }
     }
 };

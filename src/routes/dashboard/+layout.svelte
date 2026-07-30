@@ -6,6 +6,7 @@ let {
     data,
     children
 } = $props();
+ import { resolve } from '$app/paths';
 let menuAbierto = $state(false);
 const enlaces = [{
         nombre: 'Inicio',
@@ -84,9 +85,9 @@ let enlacesFiltrados = $derived(
     <aside class="hidden md:flex w-64 flex-col bg-slate-900 border-r border-slate-800 p-5 shrink-0 h-full text-white">
 
         <nav class="flex-1 space-y-1 overflow-y-auto pr-1 custom-scrollbar">
-            {#each enlacesFiltrados as enlace}
+            {#each enlacesFiltrados as enlace (enlace.ruta)}
             <a
-                href={enlace.ruta}
+                href={resolve(enlace.ruta)}
                 class="block w-full p-2.5 text-xs font-bold uppercase border transition rounded-none
                 {$page.url.pathname === enlace.ruta
                 ? 'bg-blue-700 border-blue-700 text-white'
@@ -98,7 +99,7 @@ let enlacesFiltrados = $derived(
         </nav>
         <div class="border-t border-slate-800 pt-3 mt-2 space-y-2">
             <a
-                href="/dashboard/reportes"
+                href={resolve('/dashboard/reportes')}
                 class="block w-full p-2.5 text-xs font-bold uppercase border transition rounded-none
                 {$page.url.pathname === '/dashboard/reportes'
                 ? 'bg-blue-700 border-blue-700 text-white'
@@ -107,7 +108,7 @@ let enlacesFiltrados = $derived(
                 Denuncias
             </a>
 
-            <a href="/dashboard/perfil" class="block group">
+            <a href={resolve('/dashboard/perfil')} class="block group">
                 <div class="bg-slate-950 p-3 border border-slate-800 transition group-hover:border-slate-700">
                     <p class="text-xs font-bold text-slate-300 truncate uppercase group-hover:text-blue-400 transition">{data.user?.nombre} {data.user?.apellido}</p>
                     <span class="inline-block mt-1 bg-blue-950 border border-blue-800 text-[10px] font-black uppercase text-blue-400 px-1.5 py-0.5 rounded-none">
@@ -116,7 +117,7 @@ let enlacesFiltrados = $derived(
                 </div>
             </a>
 
-            <form method="POST" action="/dashboard?/logout" class="w-full pt-1">
+            <form method="POST" action={resolve('/dashboard?/logout')} class="w-full pt-1">
                 <button type="submit" class="block w-full text-center p-2.5 text-xs font-bold uppercase border border-red-900/60 bg-red-950/40 text-red-400 hover:bg-red-900/40 transition rounded-none">
                     Cerrar Sesión
                 </button>
@@ -141,9 +142,9 @@ let enlacesFiltrados = $derived(
         </div>
 
         <div class="flex flex-col gap-1.5">
-            {#each enlacesFiltrados as enlace}
+            {#each enlacesFiltrados as enlace (enlace.ruta)}
             <a
-                href={enlace.ruta}
+                href={resolve(enlace.ruta)}
                 onclick={() => menuAbierto = false}
                 class="w-full p-3 text-left text-xs font-bold uppercase border transition rounded-none block
                 {$page.url.pathname === enlace.ruta
@@ -156,7 +157,7 @@ let enlacesFiltrados = $derived(
 
             <div class="border-t border-slate-800 pt-3 mt-2 space-y-2">
                 <a
-                    href="/dashboard/reportes"
+                    href={resolve('/dashboard/reportes')}
                     onclick={() => menuAbierto = false}
                     class="w-full p-3 text-left text-xs font-bold uppercase border transition rounded-none block
                     {$page.url.pathname === '/dashboard/reportes'
@@ -166,14 +167,14 @@ let enlacesFiltrados = $derived(
                     Denuncias
                 </a>
 
-                <a href="/dashboard/perfil" onclick={() => menuAbierto = false} class="block">
+                <a href={resolve('/dashboard/perfil')} onclick={() => menuAbierto = false} class="block">
                     <div class="bg-slate-950 p-3 border border-slate-800">
                         <p class="text-xs font-bold text-slate-300 truncate uppercase">{data.user?.nombre} {data.user?.apellido}</p>
                         <span class="text-[9px] text-slate-500 block mt-0.5 uppercase">Ver perfil de usuario</span>
                     </div>
                 </a>
 
-                <form method="POST" action="/dashboard?/logout" class="w-full pt-1">
+                <form method="POST" action={resolve('/dashboard?/logout')} class="w-full pt-1">
                     <button type="submit" class="w-full p-3 text-center text-xs font-bold uppercase border border-red-900 bg-red-950/40 text-red-400 rounded-none">
                         Cerrar Sesión
                     </button>
@@ -183,7 +184,7 @@ let enlacesFiltrados = $derived(
     </div>
 
     <nav class="md:hidden fixed bottom-0 left-0 right-0 h-14 bg-slate-950 border-t border-slate-800 z-50 flex items-center justify-between px-6 text-white">
-        <a href="/dashboard" class="flex flex-col items-start justify-center h-full">
+        <a href={resolve('/dashboard')} class="flex flex-col items-start justify-center h-full">
             <span class="text-[9px] font-black uppercase tracking-wider text-slate-500">Plataforma</span>
             <span class="text-xs font-bold text-white truncate max-w-[140px]">AmparoVZLA</span>
         </a>

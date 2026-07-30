@@ -49,7 +49,7 @@ info=""
 
 <div class="space-y-4">
     <div class="flex flex-wrap gap-1">
-        {#each categorias as cat}
+        {#each categorias as cat (cat)}
             <button 
                 onclick={() => { vistaActiva = cat; paginaActual = 1; }} 
                 class="px-4 py-2 border text-[10px] font-black uppercase tracking-wide transition rounded-none {vistaActiva === cat ? 'bg-stone-900 text-white border-stone-900' : 'bg-white hover:bg-stone-50 border-stone-200 text-stone-700'}">
@@ -98,7 +98,7 @@ info=""
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-stone-100 text-xs uppercase font-medium">
-                    {#each itemsVisibles as item}
+                    {#each itemsVisibles as item (item.id)}
                         <tr class="hover:bg-stone-50/60 transition">
                             <td class="p-3 font-bold text-stone-900">{vistaActiva === 'REPORTES' ? item.id.slice(0,8) : item.nombre}</td>
                             <td class="p-3 text-stone-600">{vistaActiva === 'REPORTES' ? (item.creadorNombre || 'Anónimo') : `${item.estado} / ${item.municipio}`}</td>

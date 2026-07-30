@@ -1,6 +1,6 @@
 <script>
     import { enhance } from '$app/forms';
-    let { data, form } = $props();
+    let { data } = $props();
 
     let isOpen = $state(false);
     let filas = $state([{ categoria: '', recursoId: '', cantidad: 1 }]);
@@ -46,7 +46,7 @@
                 <p class="text-[10px] font-mono animate-pulse">Sincronizando...</p>
             {:then listaRecursos}
                 <div class="space-y-3">
-                    {#each filas as fila, i}
+                    {#each filas as fila, i (fila)}
                     <div class="p-2 bg-stone-50 border border-stone-200 space-y-2 relative">
                         {#if filas.length > 1}
                             <button type="button" onclick={() => removerFila(i)} class="absolute top-1 right-1 bg-stone-900 text-white text-[10px] w-5 h-5 flex items-center justify-center">-</button>
@@ -54,7 +54,7 @@
 
                         <select bind:value={fila.categoria} onclick={() => fila.recursoId = ''} required>
                             {#if data.categoriaRecurso}
-                            {#each data.categoriaRecurso as cat}
+                            {#each data.categoriaRecurso as cat (cat)}
                                 <option value={cat}>{cat}</option>
                             {/each}
                             {/if}
@@ -63,7 +63,7 @@
                         <div class="flex gap-1">
                             <select name="recursoId" bind:value={fila.recursoId} disabled={!fila.categoria} required class="flex-1 border border-stone-200 p-1 text-xs uppercase rounded-none font-mono">
                                 <option value="">INSUMO...</option>
-                                {#each listaRecursos.filter(r => r.categoria === fila.categoria) as r}
+                                {#each listaRecursos.filter(r => r.categoria === fila.categoria) as r (r.id)}
                                     <option value={r.id}>{r.nombre}</option>
                                 {/each}
                             </select>

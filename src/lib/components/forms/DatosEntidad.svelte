@@ -128,7 +128,7 @@
                                         class="w-full bg-stone-50 border border-stone-200 p-2 text-xs uppercase font-mono rounded-none focus:outline-none focus:border-stone-900"
                                     >
                                         {#if estatusEntidadEnum}
-                                            {#each estatusEntidadEnum as item}
+                                            {#each estatusEntidadEnum as item (item)}
                                                 <option value={item}>{item}</option>
                                             {/each}
                                         {/if}

@@ -6,7 +6,7 @@ import {
     enhance
 } from '$app/forms';
 import Header from '$lib/components/Header.svelte';
-
+import {resolve} from "$app/paths"
 let {
     form
 } = $props();
@@ -36,7 +36,7 @@ const manejarSubmit = () => {
 <div class="grid grid-cols-1 md:grid-cols-2 min-h-screen md:h-screen w-full">
 
     <div class="relative hidden md:flex flex-col justify-between p-12 text-white h-full overflow-hidden">
-        {#each imagenes as img, i}
+        {#each imagenes as img, i (img)}
         <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out {imagenActual === i ? 'opacity-100' : 'opacity-0'}">
             <img src={img} alt="Fondo de Login" class="w-full h-full object-cover" />
             <div class="absolute inset-0 bg-blue-950/60"></div>
@@ -45,7 +45,7 @@ const manejarSubmit = () => {
 
         <div class="relative z-10 flex flex-col justify-between h-full">
             <div class="flex items-center gap-2">
-                <a href="/" class="text-[11px] flex gap-2 font-bold uppercase tracking-wider text-white">
+                <a href={resolve('/')} class="text-[11px] flex gap-2 font-bold uppercase tracking-wider text-white">
                    <img src="img/logos/asterisco.png" alt="amparovzla" width="15"/> Amparo Venezuela
                 </a>
             </div>
@@ -91,7 +91,7 @@ const manejarSubmit = () => {
                 <div class="border-t border-stone-100 pt-4 text-center">
                     <p class="text-xs text-stone-500 font-medium">
                         ¿AÚN NO FORMAS PARTE?
-                        <a href="/registro" class="text-blue-800 font-bold uppercase hover:underline block md:inline md:ml-1">Regístrate aquí</a>
+                        <a href={resolve('/registro')} class="text-blue-800 font-bold uppercase hover:underline block md:inline md:ml-1">Regístrate aquí</a>
                     </p>
                 </div>
 
