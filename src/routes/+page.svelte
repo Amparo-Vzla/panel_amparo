@@ -7,7 +7,7 @@
 
     let { data } = $props();
 
-    const { form, errors, message, enhance, delayed } = superForm(data.form);
+    const { form, errors, message, enhance, delayed } = $derived(superForm(data.form));
 
     let imagenActual = $state(0);
     const imagenes = ['/img/auth/ingreso_1.jpg', '/img/auth/ingreso_2.jpg'];
