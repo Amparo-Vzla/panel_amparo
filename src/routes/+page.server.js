@@ -63,7 +63,8 @@ export const actions = {
         entidadId = entidadAsignada[0].id;
         tipoEntidad = entidadAsignada[0].tipo;
       }
-    } catch (error) {
+    } catch (e) {
+      console.error(e)
       return message(form, "Error al procesar los permisos del usuario.", { status: 500 });
     }
 
