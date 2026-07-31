@@ -1,24 +1,31 @@
-// src/routes/login/+page.server.js
 import { fail, redirect } from "@sveltejs/kit";
-import { dev } from "$app/environment"; // <-- Control de entorno para cookies
+import { superValidate, message, setError } from "sveltekit-superforms";
+import { zod4 } from "sveltekit-superforms/adapters";
+import { dev } from "$app/environment";
 import { db } from "$lib/server/db";
 import { usuarios, entidades } from "$lib/server/db/schema";
 import { eq } from "drizzle-orm";
 import { SignJWT } from "jose";
 import { env } from "$env/dynamic/private";
 import { hashPassword } from "$lib/server/crypto";
+import { loginSchema } from "$lib/schemas/auth"; 
 
 const SECRET_KEY = new TextEncoder().encode(env.JWT_SECRET);
 
+export const load = async () => {
+  const form = await superValidate(zod4(loginSchema));
+  return { form };
+};
+
 export const actions = {
   default: async ({ request, cookies }) => {
-    const data = await request.formData();
-    const correo = data.get("correo")?.toString().trim();
-    const password = data.get("password")?.toString();
+    const form = await superValidate(request, zod4(loginSchema));
 
-    if (!correo || !password) {
-      return fail(400, { error: "Todos los campos son requeridos." });
+    if (!form.valid) {
+      return fail(400, { form });
     }
+
+    const { correo, password } = form.data;
 
     let usuario;
     try {
@@ -29,20 +36,17 @@ export const actions = {
         .limit(1);
       usuario = resultado[0];
     } catch (error) {
-      console.error(
-        "ERROR EN BASE DE DATOS AL BUSCAR USUARIO:",
-        error.message || error,
-      );
-      return fail(500, { error: "Error de conexión con la base de datos." });
+      console.error("ERROR EN BASE DE DATOS:", error);
+      return message(form, "Error de conexión con la base de datos.", { status: 500 });
     }
 
     if (!usuario) {
-      return fail(400, { error: "Credenciales inválidas." });
+      return setError(form, "correo", "Credenciales inválidas.");
     }
 
     const securePassword = await hashPassword(password);
     if (usuario.password !== securePassword) {
-      return fail(400, { error: "Credenciales inválidas." });
+      return setError(form, "password", "Credenciales inválidas.");
     }
 
     let entidadId = null;
@@ -60,16 +64,8 @@ export const actions = {
         tipoEntidad = entidadAsignada[0].tipo;
       }
     } catch (error) {
-      console.error(
-        "ERROR AL CARGAR METADATOS DE SEGURIDAD:",
-        error.message || error,
-      );
-      return fail(500, {
-        error: "Error al procesar los permisos del usuario.",
-      });
+      return message(form, "Error al procesar los permisos del usuario.", { status: 500 });
     }
-
-// ... código anterior (validaciones y consultas db) ...
 
     const payloadToken = {
       id: usuario.id,
@@ -83,20 +79,15 @@ export const actions = {
       tipoEntidad,
     };
 
-    // IMPRESIÓN DE DEPURACIÓN AQUÍ
-    console.log("=== DATOS A GUARDAR EN EL TOKEN ===", payloadToken);
-
     const token = await new SignJWT(payloadToken)
       .setProtectedHeader({ alg: "HS256" })
       .setExpirationTime("4h")
       .sign(SECRET_KEY);
 
-// ... resto del código (cookies.set y redirect) ...
-
     cookies.set("session_token", token, {
       path: "/",
       httpOnly: true,
-      secure: !dev, // <-- CAMBIO CLAVE: Falso en localhost/IP, verdadero en producción
+      secure: !dev,
       sameSite: "lax",
       maxAge: 60 * 60 * 4,
     });
